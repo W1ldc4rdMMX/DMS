@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>{% block title %}Discount Motor Spares!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <h1>Discount Motor Spares</h1>
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Home</a>
+                <a class="navbar-brand" href="/Products">Products</a>
+                <a class="navbar-brand" href="/Promotions">Promotions</a>
+                <a class="navbar-brand" href="/StoreLocator">Store Locator</a>
+                <a class="navbar-brand" href="/OurTeam">Our Team</a>
+                <a class="navbar-brand" href="/AboutUs">About Us</a>
+            </div>
+        </nav>
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
