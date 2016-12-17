@@ -4,23 +4,64 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <title>{% block title %}Discount Motor Spares!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>
+            {% block title %}
+                Discount Motor Spares!
+            {% endblock %}
+        </title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/DMSstyles.css') }}"/>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <h1>Discount Motor Spares</h1>
-        <nav class="navbar navbar-default">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Home</a>
-                <a class="navbar-brand" href="/Products">Products</a>
-                <a class="navbar-brand" href="/Promotions">Promotions</a>
-                <a class="navbar-brand" href="/StoreLocator">Store Locator</a>
-                <a class="navbar-brand" href="/OurTeam">Our Team</a>
-                <a class="navbar-brand" href="/AboutUs">About Us</a>
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/"><span class = "glyphicon glyphicon-home"></span> Home </a></li>
+                            <li><a href="/Products"><span class = "glyphicon glyphicon-plus"></span> Products </a></li>
+                            <li><a href="/Promotions"><span class = "glyphicon glyphicon-list-alt"></span> Promotions </a></li>
+                            <li><a href="/StoreLocator"><span class = "glyphicon glyphicon-shopping-cart"></span>Store Locator </a></li>
+                            <li><a href="/OurTeam"><span class = "glyphicon glyphicon-stats"></span> Our Team </a></li>
+                            <li><a href="/AboutUs"><span class = "glyphicon glyphicon-stats"></span> About Us </a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                        <!--li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li-->
+                        {% if is_granted("ROLE_USER") %}
+                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-user"></span>  {{ app.user.username }}
+                                    <span class="glyphicon glyphicon-collapse-down"></span> </a>
+                                <ul class="dropdown-menu">
+                                    {% if is_granted("ROLE_ADMIN") %}
+                                        <li><a href="admin"><span class="glyphicon glyphicon-th-list">
+                                        </span>  Admin Page</a></li>
+                                    {% endif %}
+                                    <li><a href="metaData"><span class="glyphicon glyphicon-equalizer">
+                                        </span>  System Logs</a></li>
+                                    <li><a href="{{ logout_path('main') }}"><span class="glyphicon glyphicon-log-out">
+                                        </span>  Logout</a></li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li> <a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
         </nav>
+        <img src="{{ asset('0.jpg') }}" width="100%" height="250px">
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+
+        {% endblock %}
     </body>
 </html>

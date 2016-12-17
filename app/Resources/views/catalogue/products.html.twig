@@ -1,5 +1,31 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .col-sm-3 {
+            margin: 30px;
+            background-color: #ffffff;
+            border: 5px darkblue;
+            color: #5C0C0C;
+            font-size: medium;
+            width: 25%;
+        }
+    </style>
+{% endblock  %}
+
 {% block body %}
-    <h2>Products</h2>
+    <div class="container-fluid">
+        <h2>Products</h2>
+        <div class="col-sm-12">
+            <div class="well">
+                <div class="row">
+                    <div class="col-sm-3">
+                        This text is enclosed in a box.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
